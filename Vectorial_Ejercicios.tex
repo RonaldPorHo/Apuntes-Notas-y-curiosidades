@@ -1,0 +1,107 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{letterpaper}
+
+% Paquetes matemáticos
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+
+% Texto y espaciado
+\usepackage{parskip}   % elimina sangrías y agrega espacio entre párrafos
+\usepackage{xcolor}    % colores
+\usepackage{array,booktabs} % tablas mejoradas
+\usepackage{enumitem}  % control sobre enumerate/itemize
+
+% Gráficos
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+% Hipervínculos
+\usepackage{hyperref}
+
+% Comandos personalizados
+\newcommand{\sen}{\operatorname{sen}}
+\newcommand{\gr}{^{\circ}}
+
+\begin{document}
+
+\begin{enumerate}
+
+    \item Sea $f:U\to\mathbb{R}$ diferenciable en $U\subset\mathbb{R}^m$ y abierta. Suponga $df(a)\neq0$ para cierto $a\in U$ y considere el vector unitario $u\in\mathbb{R}^m$ tal que $df(a)\cdot u=\max\{df(a)\cdot h;|h|=1\}$. Sea $v\in\mathbb{R}^m$ tal que $df(a)\cdot v=0$ muestre que $v$ es perpendicular a $u$.\\
+
+    \emph{Solución:}\\
+    Se tiene: $df(a)\cdot u\geq df(a)\cdot h,\ \forall h/|h|=1$. En particular:
+    \[
+      h=\dfrac{\nabla f(a)}{|\nabla f(a)|}
+    \]
+    \[
+      \Rightarrow df(a)\cdot u \geq df(a)\cdot \frac{\nabla f(a)}{|\nabla f(a)|}
+      =\left\langle\nabla f(a), \frac{\nabla f(a)}{|\nabla f(a)|}\right\rangle
+      =|\nabla f(a)|
+    \]
+    \[
+      df(a)\cdot u=\langle\nabla f(a), u\rangle \leq|\nabla f(a)|\cdot|u|
+      =|\nabla f(a)|
+    \]
+    \[
+      \therefore df(a)\cdot u=|\nabla f(a)|
+    \]
+    \[
+      u=\alpha \nabla f(a)\Rightarrow \alpha=\pm1
+    \]
+    \[
+      df(a)\cdot v=0 \ \Rightarrow\ \langle\nabla f(a), v\rangle=0 \ \Rightarrow v \perp \nabla f(a)
+    \]
+    \[
+      \nabla f(a)//u \ \Rightarrow u\perp v
+    \]
+
+    \item Muestre que $\dfrac{d \mathbf{r}}{d s} \cdot \dfrac{d^{2} \mathbf{r}}{d s^{2}} \times \dfrac{d^{3} \mathbf{r}}{d s^{3}}=\dfrac{\tau}{\rho^{2}}$:  
+
+    \[
+    \frac{d \mathbf{r}}{d s}=\mathbf{T}, \quad 
+    \frac{d^{2} \mathbf{r}}{d s^{2}}=\kappa \mathbf{N}, \quad 
+    \frac{d^{3} \mathbf{r}}{d s^{3}}=\kappa \tau \mathbf{B}-\kappa^{2} \mathbf{T}+\frac{d \kappa}{d s} \mathbf{N}
+    \]
+
+    \[
+    =\mathbf{T}\cdot\big(\kappa^{2}\tau \mathbf{T}+\kappa^{3}\mathbf{B}\big)
+    =\kappa^{2}\tau=\frac{\tau}{\rho^{2}}, \quad \rho=\frac{1}{\kappa}
+    \]
+
+    \item Dada la ecuación $x=t, \ y=t^2, \ z=\tfrac{2}{3}t^3$, calcule la curvatura y la torsión.
+
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        \[
+          \mathbf{r}=t\mathbf{i}+t^2\mathbf{j}+\frac{2}{3}t^3\mathbf{k}, \quad 
+          \frac{d \mathbf{r}}{dt}=\mathbf{i}+2t\mathbf{j}+2t^2\mathbf{k}
+        \]
+        \[
+          \frac{ds}{dt}=\sqrt{1+(2t)^2+(2t^2)^2}=1+2t^2
+        \]
+        \[
+          \mathbf{T}=\frac{\mathbf{i}+2t\mathbf{j}+2t^2\mathbf{k}}{1+2t^2}
+        \]
+        \[
+          \frac{d\mathbf{T}}{ds}=\frac{-4t\mathbf{i}+(2-4t^2)\mathbf{j}+4t\mathbf{k}}{(1+2t^2)^3}
+        \]
+        \[
+          \kappa=\left|\frac{d\mathbf{T}}{ds}\right|=\frac{2}{(1+2t^2)^2}
+        \]
+
+        \item 
+        \[
+          \mathbf{B}=\mathbf{T}\times \mathbf{N}
+          =\frac{2t^2 \mathbf{i}-2t \mathbf{j}+\mathbf{k}}{1+2t^2}
+        \]
+        \[
+          \frac{d\mathbf{B}}{ds}=\frac{4t\mathbf{i}+(4t^2-2)\mathbf{j}-4t\mathbf{k}}{(1+2t^2)^3}
+        \]
+        \[
+          \tau=\frac{2}{(1+2t^2)^2}
+        \]
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
