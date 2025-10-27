@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{setspace}
+
+\makeatletter
+\newcommand\Cshadowbox{\VerbBox\@Cshadowbox}
+\def\@Cshadowbox#1{%
+  \setbox\@fancybox\hbox{\fbox{#1}}%
+  \leavevmode\vbox{%
+    \offinterlineskip
+    \dimen@=\shadowsize
+    \advance\dimen@ .5\fboxrule
+    \hbox{\copy\@fancybox\kern.5\fboxrule\lower\shadowsize\hbox{%
+      \color{ShadowColor}\vrule \@height\ht\@fancybox \@depth\dp\@fancybox \@width\dimen@}}%
+    \vskip\dimexpr-\dimen@+0.5\fboxrule\relax
+    \moveright\shadowsize\vbox{%
+      \color{ShadowColor}\hrule \@width\wd\@fancybox \@height\dimen@}}}
+\makeatother
+\setlength{\topmargin}{-30mm}
+\setlength{\bottommargin}{\-}
+
+
+\pagestyle{fancy}
+\begin{document}
+
+\runningheadrule
+\runningfootrule
+\onehalfspacing
+\newcommand{\tf}[1][{}]{%
+\fillin[#1][0.25in]%
+}
+\begin{center}
+    \begin{minipage}{1.7cm}
+		\begin{center}
+			\hspace*{-2cm} \includegraphics[scale=0.05]{uni-logo-color}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}{11.4cm}
+		\begin{flushleft}
+				\hspace*{-1.0cm} \small \text{Universidad Nacional de Ingenieria}\\ \hspace*{-0.85cm}\text{Facultad de Ingenieria Mecanica}\\
+\hspace*{-0.85cm}\text{Departamento de Ciencias Basicas y Humanidades}\\ \hspace*{-0.85cm}\text{Ecuaciones Diferenciales MB 155} \hfill \text{Ciclo:2018-II}
+
+		\end{flushleft}
+	\end{minipage}
+
+\end{center}
+
+\pagestyle{empty}
+
+\begin{center}
+\textbf{\large Examen Final}
+\end{center}
+
+\begin{small}
+Profesores: Carlos ROJAS, Manuel KUROKAWA, Sergio QUISPE, Victor HUANCA \quad
+Seccion: A,B,C,D,E \hfill Duracion: 110 minutos \\
+Fecha: Martes, 11 de diciembre del 2018 \hfill Hora: 08 a 10 horas
+\end{small}
+
+\makebox[1pt][l]{\rule[3pt]{15cm}{1pt}}\rule{15cm}{1pt}\\
+\underline{Indicaciones:}\hfill Puntaje: Cada pregunta vale 5 puntos\\
+Sin elementos de consulta \hfill Sin calculadoras, sin celulares\\
+
+\textbf{Problema 1:}\\
+Hallar:
+\[
+\text{a)}\ \mathcal{L}\big[|\sin t|\big]\hspace{80pt}
+\text{b)}\ \mathcal{L}^{-1}\!\left[\frac{s^{3}+3s^{2}-s-3}{(s^{2}+2s+5)^{2}}\right]
+\]
+
+\textbf{Problema 2:}\\
+Resolver la ecuación diferencial:
+\[
+y''+4y=f(x),\qquad y(0)=1,\qquad y'(0)=1
+\]
+donde
+\[
+f(x)=
+\begin{cases}
+0,& 0\le x<\pi,\\
+1-\sin(3x),& x\ge \pi.
+\end{cases}
+\]
+
+\textbf{Problema 3:}\\
+Dada la función $f(t)=t^2$ para $0<t<2\pi$ y $f(t+2\pi)=f(t)$:
+\begin{enumerate}
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+\item Encuentre la serie de Fourier de $f(t)$.
+\item Con lo anterior, evalúe $\displaystyle\sum_{n=1}^{\infty}\frac{(-1)^{n}+1}{n^2}$.
+\end{enumerate}
+
+\textbf{Problema 4:}\\
+Los extremos de una barra de cobre de $2$ m de longitud (coeficiente de difusividad $c=1.14$) se mantienen a $0^{\circ}C$. Si la temperatura inicial es
+\[
+f(x)=\cos^{2}(\pi x),\qquad 0\le x\le 2,
+\]
+donde $x$ es la distancia desde un extremo, encuentre la expresión de la temperatura de la barra después de un tiempo $t$.
+
+\end{document}
