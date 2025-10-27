@@ -1,1 +1,1 @@
-Esta es una recolección de algunos archivos redactados a lo largo de los años de pandemia. Espero que este deseo por conservar los archivos le resulte de apoyo a alguien más.
+Esta es una recolección de algunos archivos redactados a lo largo de los años de pandemia. Espero que este deseo por conservar los archivos le resulte de apoyo a alguien más y sepa transmitir el conocimiento a quien corresponda.
