@@ -1,0 +1,159 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{fancybox}
+\usepackage{dsfont}
+\definecolor{ShadowColor}{RGB}{200,10,10}
+\usepackage{fancybox}	
+\usepackage{fancyhdr}
+\usepackage{xspace}
+\usepackage{array,booktabs}
+\usepackage{proof}
+\usepackage{pst-solides3d} 
+\usepackage{fancyhdr}
+ \usepackage{paralist}
+ \usepackage{hyperref}
+\usepackage{marginnote}
+\usepackage{hyperref}
+\usepackage{marginnote}
+\usepackage{fancyhdr}
+\usepackage{multirow} 
+\usepackage{array}
+\newcommand{\sen}{\operatorname{sen}}
+\makeatletter
+\newcommand\Cshadowbox{\VerbBox\@Cshadowbox}
+\def\@Cshadowbox#1{%
+  \setbox\@fancybox\hbox{\fbox{#1}}%
+  \leavevmode\vbox{%
+    \offinterlineskip
+    \dimen@=\shadowsize
+    \advance\dimen@ .5\fboxrule
+    \hbox{\copy\@fancybox\kern.5\fboxrule\lower\shadowsize\hbox{%
+      \color{ShadowColor}\vrule \@height\ht\@fancybox \@depth\dp\@fancybox \@width\dimen@}}%
+    \vskip\dimexpr-\dimen@+0.5\fboxrule\relax
+    \moveright\shadowsize\vbox{%
+      \color{ShadowColor}\hrule \@width\wd\@fancybox \@height\dimen@}}}
+
+\begin{document}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead[UNI-Facultad de Ingeniería Mecánica]{UNI-Facultad de Ingeniería Mecánica}
+\rhead[MB148-B. 2020-I]{MB148-B. 2020-I}
+\cfoot[\thepage]{\thepage}
+\underline{\textbf{Problema 1:}} La curva regular $C$ resulta de la intersección de las siguientes
+superficies $S_{1}: y^2-z^2=x-2$ y $S_2:y^2+z^2=9$.\quad Determine las ecuaciones paramétricas de la curva $C$\\
+\emph{Solución:}\\
+En $S_2$ vemos que podemos aplicar:
+\[\sen^2(x)+\cos^2(x)=1 \]
+Obteniendo que:
+\[y=3\cos t\qquad z=3\sen t\]
+Ahora en $S_1$:
+\[9\cos^2t-9\sen^2t=x-2\]
+\[ 9(\cos(2t)+2=x\]
+Por tanto:
+\[C:\left\{\begin{array}{l}
+x=9 \cos 2 t+2 \\
+y=3 \cos t \\
+z=3 \sin t
+\end{array},\qquad t \in I\right. \]
+Siendo que $I\subseteq\mathds{R}$, de modo que para cerrar la curva basta con tener (el dominio puede expandirse pero se volvería a recorrer la curva) $I=[(2n-1)\pi,2n\pi], \forall n \in \mathds{N}$. 
+Una gráfica sería:\\
+\begin{center}
+\psset{unit=0.125,viewpoint=20 20 20 rtp2xyz}
+\begin{pspicture}(-25,16)(0,4)
+\axesIIID(-8,-5,-5)(12,5,5)
+\defFunction[algebraic]{mydensity}(t)
+ {9*cos(2*t)+2}
+ {3*cos(t)}
+ {3*sin(t)}
+\psSolid[object=courbe,r=.0001,range=0
+6.28,linewidth=0.2,resolution=360,
+function=mydensity,linecolor=blue,incolor=yellow,hue=0 2]
+\end{pspicture}
+
+\end{center}
+\newpage
+\underline{\textbf{Problema 2:}} Sea $C$ una curva suave, en el instante $t=1$ tiene rapidez igual a $\sqrt{3}$, curvatura $K(1)=\displaystyle\dfrac{\sqrt{2}}{2}$ y torción $\tau(1)=\displaystyle\dfrac{1}{3}$ además con vectores unitarios:\\
+\emph{Solución:}\\
+$T(1)=\displaystyle\dfrac{1}{\sqrt{3}}(1,1,1), N(1)=\dfrac{1}{\sqrt{2}}(0,1,-1), B(1)=\dfrac{1}{\sqrt{6}}(-2,1,1)$. Para el instante $t=1$, defina las componentes de los siguientes vectores:
+\begin{enumerate}[a)]
+    \item $\displaystyle\dfrac{dT}{dt}$ \\
+    Sabemos que:
+    \[\dfrac{dT}{dt}=T'(t)=K(t)\|r'(t)\|N(t) \]
+    Bata reemplazar los datos, obteniendo:
+    \[T'(1)=\dfrac{\sqrt{2}}{2}\cdot\sqrt{3}\cdot\dfrac{1}{\sqrt{2}}(0,1,-1)=(0,\dfrac{\sqrt{3}}{2},-\dfrac{\sqrt{3}}{2}) \]
+    \item $\displaystyle\dfrac{dB}{dt}$\\
+    Se tiene que: 
+    \[\dfrac{dB}{dt}=B^{\prime}(t)=-\tau(t)\|r^{\prime}(t)\|N(t)\]
+    Reemplazando:
+    \[B^{\prime}(1)=\dfrac{-1}{3}\cdot\sqrt{3}\cdot\dfrac{1}{\sqrt{2}}(0,1,-1)=(0,-\dfrac{\sqrt{6}}{6},\dfrac{\sqrt{6}}{6})\]
+    \item $\displaystyle\dfrac{dN}{dt}$:\\
+    Se sabe que:
+    \[\dfrac{dN}{dt}=N^{\prime}(t)=\tau(t)\|r^{\prime}(t)\|B(t)-K(t)\|r^{\prime}(t)\|T(t)\]
+    Reemplazando los datos:
+    \[N^{\prime}(1)=\dfrac{1}{3}\cdot\sqrt{3}\cdot\dfrac{1}{\sqrt{6}}(-2,1,1)-\dfrac{\sqrt{2}}{2}\cdot\sqrt{3}\cdot\dfrac{1}{\sqrt{3}}(1,1,1)=(-\dfrac{5\sqrt{2}}{6},-\dfrac{2\sqrt{2}}{6},\dfrac{2\sqrt{2}}{6})\]
+\end{enumerate}
+\underline{\textbf{Problema 3:}} : Sea $C$ un curva regular con rapidez arbitraria, definida por:\\
+\emph{Solución:}
+\[r(t)=(2t^2,2t^2,\cos t); \qquad 0\leq t \leq 4\pi \]
+Tenemos lo siguiente:
+\[r^{\prime\prime}(t)=(4t,4t,-\sen t), \qquad r^{\prime\prime}(t)=(4,4,-\cos t), \qquad r^{\prime\prime\prime}(t)=(0,0,\sen t)\]
+\begin{enumerate}[a)]
+    \item Determine la curvatura de $C$:
+    \[K(t)=\dfrac{\|r^{\prime}(t)\time r^{\prime\prime}(t) \|}{\|r^{\prime}(t) \|^3}=\dfrac{\|(-4t\cos t+4\sen t,4t\cos t-4\sen t,0\|}{\sqrt{32t^2+\sen^2t}^3}=4\sqrt{2}\dfrac{|t\cos t-\sen t|}{\sqrt{32t^2+\sen^2t}^3} \]
+    \item Calcule la torsión de $C$:\\
+    Se tiene una curva plana, por lo que $\tau(t)=0$
+    \item  Describa las características geométricas de $C$ y realice un bosquejo de la curva:
+    \begin{itemize}
+                \item Esta curva no pasa por el origen de coordenadas es decir, el vector (0,0,0) no pertenece al rango de $r(t)$
+        \item El punto inicial de la curva es $(0,0,1)$ y el punto final es $(32\pi^2,32\pi^2,1)$
+        \item Es una curva plana ya que todos sus puntos satisfacen a la ecuación de un plano $x-y=0$
+        \item Por el mismo hecho del punto anterior, la proyección de la curva sobre el plano XY es una recta en la que todos sus puntos satisfacen la ecuación $x=y$
+        \item 	La curva cruza al plano $XY$ 4 veces, los puntos en donde lo corta son  $r\displaystyle(\dfrac{\pi}{2}),r(\dfrac{3\pi}{2}),r(\dfrac{5\pi}{2})$ y $r(\dfrac{7\pi}{2})$
+        \item Es una curva simple debido a que la única condición para que un $r(a)$, sea igual a un $r(b)$ es que $a$ y $b$ sean iguales
+        \item Los valores en el eje vertical$Z$ oscilan entre -1 y 1, pues la función $\cos t\in[-1,1]$ 
+        \item No es una curva cerrada ya que no existen $a,b∈[0,4π]$ con $a\neq b$  talque $r(a)=r(b)$
+    \end{itemize}
+Una gráfica hecha en Matlab sería:
+\begin{center}
+    \includegraphics[scale=0.5]{ww}
+\end{center}
+\end{enumerate}
+\underline{\textbf{Problema 4:}} Una partícula se mueve sobre una curva regular $C$ representada por la
+siguiente función vectorial
+\[C: r(t)=-\frac{1}{2} t^{2} \mathbf{i}+t \mathbf{j}-\frac{\sqrt{3}}{2} t^{2} \mathbf{k}; \qquad 0 \leq t \leq 2 \]
+defina una nueva función vectorial de modo que la partícula recorra $C$ en sentido
+contrario y que lo haga en el doble del tiempo.\\
+\emph{Solución:}\\
+Tenemos: $r:[0,2]\to\mathds{R}^3$ y queremos que la curva reparametrizada haga su recorrido con la mitad de velocidad de la curva original, por lo que se buscara una función:
+\[\varphi:[0,4]\to[0,2]\]
+Como buscamos el sentido contrario se aplica la fórmula:
+\[\varphi(t)=-kt+b \]
+Siendo $k$ la relación entre la velocidad de la nueva curva y la inicial, con $b$ como el limite superior del dominio de la $C$. Por lo que se obtiene:
+\[\varphi(t)=-\dfrac{1}{2}t+2 \]
+Con lo que se tiene la curva:
+\[r(\varphi(t))=-\dfrac{1}{2}\left(2-\dfrac{t}{2}\right)^2\mathbf{i}+\left(2-\dfrac{t}{2}\right)\mathbf{j}-\dfrac{\sqrt{3}}{2}\left(2-\dfrac{t}{2}\right)^2\mathbf{k}; \qquad 0\leq s\leq4 \]
+
+
+
+\fbox{Hecho en \LaTeX}
+
+
+
+
+
+
+\end{document}
