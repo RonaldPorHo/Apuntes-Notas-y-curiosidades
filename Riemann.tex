@@ -1,0 +1,85 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{fancybox}
+\definecolor{ShadowColor}{RGB}{200,10,10}
+\usepackage{fancybox}	
+\usepackage{xspace}
+\usepackage{array,booktabs}
+\usepackage{proof}
+\usepackage{fancyhdr}
+ \usepackage{paralist}
+ \usepackage{hyperref}
+\usepackage{marginnote}
+\newcommand{\sen}{\operatorname{sen}}
+\makeatletter
+\newcommand\Cshadowbox{\VerbBox\@Cshadowbox}
+\def\@Cshadowbox#1{%
+  \setbox\@fancybox\hbox{\fbox{#1}}%
+  \leavevmode\vbox{%
+    \offinterlineskip
+    \dimen@=\shadowsize
+    \advance\dimen@ .5\fboxrule
+    \hbox{\copy\@fancybox\kern.5\fboxrule\lower\shadowsize\hbox{%
+      \color{ShadowColor}\vrule \@height\ht\@fancybox \@depth\dp\@fancybox \@width\dimen@}}%
+    \vskip\dimexpr-\dimen@+0.5\fboxrule\relax
+    \moveright\shadowsize\vbox{%
+      \color{ShadowColor}\hrule \@width\wd\@fancybox \@height\dimen@}}}
+\makeatother
+
+
+
+\begin{document}
+\pagestyle{empty}
+\begin{center}
+\textcolor{red}{Un ejemplo clásico para la integral de Riemann :)}
+\end{center}
+\begin{center}
+\Cshadowbox{Calcular: $\displaystyle\int_{0}^{\pi}\dfrac{\sin^2 rx}{\sin^2 \frac{1}{2}x}dx, \quad r\geq0$}
+\end{center}
+\begin{center}
+\textbf{Solución:}
+\end{center}
+Resolveremos la integral mediante sumas de Riemann, recordemos que:
+\begin{equation}
+\lim_{n\rightarrow \infty}\dfrac{\pi}{n} \sum_{k=1}^{n} \dfrac{\sin^2 (kr\pi/n)}{\sin^2(k\pi/2n)} 
+\end{equation}
+Ahora note que para $m\geq2$ :
+\begin{equation*}
+1-\cos mx=1-\cos x+\sum_{p=1}^{m-1} [\cos px-\cos(p+1)x]
+\end{equation*}
+\begin{equation*}
+\cos px-\cos(p+1)x=1-\cos x-\sum_{q=1}^{p} [\cos(q-1)x-2\cos qx+\cos(q+1)x]
+\end{equation*}
+\begin{equation*}
+\cos(q-1)x+\cos(q+1)x=2\cos qx \cos x
+\end{equation*}
+Entonces:
+\begin{equation*}
+1-\cos mx=(1-\cos x)\left[m+2\sum_{p=1}^{m-1}\sum_{q=1}^{p}\cos qx \right]=(1-\cos x)\left[m+2\sum_{j=1}^{m-1}(m-j)\cos jx \right]
+\end{equation*}
+\begin{equation*}
+\Rightarrow \dfrac{\sin^2 \frac{1}{2}mx}{\sin^2 \frac{1}{2}x}=\dfrac{1-\cos mx}{1-\cos x}=m+2\sum_{j=1}^{m-1}(m-j)\cos jx, \qquad 0<\dfrac{1}{2}x<\pi
+\end{equation*}
+\qquad Con $m=2r>0$ y $x=k\pi/n$ se obtiene algo similar a lo buscado en (1):
+\begin{equation}
+\sum_{k=1}^{n-1}\left[2r+2\sum_{j=1}^{2r-1} (2r-j)\cos (\dfrac{jk\pi}{n})\right]=2r(n-1)+2\sum_{j=1}^{2r-1}(2r-j)\sum_{k=1}^{n-1}\cos \dfrac{jk\pi}{n}
+\end{equation}
+\qquad Usamos la fórmula:
+\begin{equation*}
+\cos x+\cos 2x+'cdots+\cos mx=\dfrac{\sin(m+\frac{1}{2})x}{2\sin (\frac{1}{2}x)}-\dfrac{1}{2}
+\end{equation*}
+\end{document}
